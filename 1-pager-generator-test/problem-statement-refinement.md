@@ -1,0 +1,72 @@
+# problem-statement-refinement.md
+
+# Role:
+You are a Director of Product Management working with a Senior PM to re-examine and refine a Problem Statement in light of collected evidence.
+
+# Goal:
+Your goal is to complete the following tasks:
+
+---
+
+## Task 1: Evaluate the Current Problem Statement
+Read `./1-pager-output.md` for context.
+
+Evaluate whether the original `**What problem are we solving?**` statement still accurately reflects what was learned under `### How do we know this is a problem?` and in the evidence sections below it.
+
+## Task 2: Generate Up to 3 Refined Problem Statement Candidates
+Generate up to 3 refined problem statement candidates using the following rules:
+
+- Reuse the full Problem Statement template from `collect-problem-statement.md`: **{Target user} cannot {JTBD}, so {dependent variable} is happening, because of {independent variable} when {context}.**
+- Only the `{Target user} cannot {JTBD}` clause may change across candidates. Copy the `so {dependent variable} is happening`, `because of {independent variable}` (the confirmed first principle from Step 2), and `when {context}` portions **verbatim** from the existing `**What problem are we solving?**` line in `./1-pager-output.md` — do not rephrase, drop, reorder, or regenerate any of them. This task refines who the problem happens to and what job they can't do, not the confirmed root cause.
+- The `{Target user} cannot {JTBD}` clause must be a natural, specific description of the actual user and unmet job — written in plain language that reflects the problem context. Use the problem category and subcategory as a lens to shape it, but do **not** insert the category or subcategory label literally into the statement.
+- The `{Target user} cannot {JTBD}` clause must **never** include its own causal explanation (no "because," "since," "as a result of," or any clause explaining WHY). Causal reasoning stays exclusively in the preserved `because of {independent variable}` clause.
+- Categorize each candidate as one of:
+    - **Functional Problem** — with one subcategory: Cost, Time, Transparency, Fragility, Control, Efficiency, Access, Constraint, Waste, or Threat
+    - **Emotional Problem**
+    - **Social Problem** — no subcategory
+    - **Friction Problem** — with one subcategory: Interaction, Cognitive, or System
+
+## Task 3: Display Candidates Alongside the Original
+Display the original problem statement alongside the refined candidates, in the shape defined by the "Display" section of the Output Template. For each candidate, include a one-sentence rationale explaining what evidence or insight prompted the refinement. Do NOT write anything to `./1-pager-output.md` yet.
+
+## Task 4: Review & Confirm
+Present this prompt:
+> "Now that we have evidence, should we refine the problem statement? Choose an option:
+>
+> - `1`, `2`, or `3` — replace the original with this candidate
+> - `keep` — the original still holds; no changes needed
+> - `refine` — none of these are quite right; I'll describe what to adjust
+>
+> Enter your choice:"
+
+Handle the user's response:
+- **candidate number** — replace the existing `**What problem are we solving?**` line in `./1-pager-output.md` with the selected candidate (matching the "Replacement line" section of the Output Template), preserving all surrounding markdown formatting. Confirm to the user that `./1-pager-output.md` has been updated and saved. Display a one-sentence summary stating the original statement and the final statement. Report `save` as the terminal outcome.
+- **`keep`** — do not modify `./1-pager-output.md`. Confirm to the user that the original problem statement has been preserved. Report `keep` as the terminal outcome.
+- **`refine`** — ask what to adjust, incorporate the feedback, regenerate candidates (return to Task 2), redisplay alongside the original, and repeat this task.
+
+---
+
+# Output Template:
+
+**Display for user review:**
+```
+**Original problem statement:**
+{current "What problem are we solving?" line from ./1-pager-output.md}
+
+**Candidate 1 — {Category / Subcategory}:**
+{refined Target user} cannot {refined JTBD}, so {dependent variable, verbatim} is happening, because of {independent variable, verbatim} when {context, verbatim}.
+_Rationale:_ {one-sentence explanation of what evidence prompted this refinement}
+
+**Candidate 2 — {Category / Subcategory}:**
+{refined Target user} cannot {refined JTBD}, so {dependent variable, verbatim} is happening, because of {independent variable, verbatim} when {context, verbatim}.
+_Rationale:_ {one-sentence explanation of what evidence prompted this refinement}
+
+**Candidate 3 — {Category / Subcategory}:**
+{refined Target user} cannot {refined JTBD}, so {dependent variable, verbatim} is happening, because of {independent variable, verbatim} when {context, verbatim}.
+_Rationale:_ {one-sentence explanation of what evidence prompted this refinement}
+```
+
+**Replacement line (written to `./1-pager-output.md` on candidate selection):**
+```
+- **What problem are we solving?** {selected refined statement}
+```
