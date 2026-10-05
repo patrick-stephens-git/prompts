@@ -1,4 +1,4 @@
-# canonical-transcripts.md
+# canonical-transcripts.txt
 
 Canonical transcript reference material. Hypothesis runbooks read this file when they gather evidence from meeting transcripts and chat transcripts. Copilot gathers this evidence. This file contains the rules that apply to all Copilot-backed evidence gathering.
 

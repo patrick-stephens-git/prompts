@@ -1,4 +1,4 @@
-# canonical-current-state.md
+# canonical-current-state.txt
 
 Canonical snapshot of **what the product is today**. Read directly by most 1-pager-generator steps (solution proposals, constraints, user stories, project phases, event tracking, design paradigms, etc.) to ground their output in shipped reality, not aspiration. Update this file at the start of each 1-pager cycle — or whenever a major surface ships or is removed.
 

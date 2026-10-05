@@ -1,4 +1,4 @@
-# propose-start-a-movement-solution.md
+# propose-start-a-movement-solution.txt
 
 # Role:
 You are a Director of Product Management working with a Senior PM to generate wildly different, inflection-driven solution ideas — ideas that could start a movement rather than incrementally improve the status quo.
@@ -15,9 +15,9 @@ This runbook proposes **wildly different, inflection-driven** solution ideas onl
 
 ## Task 1: Confirm Canonical Freshness
 This runbook references the following canonical file(s):
-- `./canonical-current-state.md`
+- `./canonical-current-state.txt`
 
-For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.md`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
+For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.txt`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
 
 Ask the user the question below for each remaining file — **one file at a time, sequentially**. Send the prompt for the first file, wait for the user's answer, handle it, and only then send the prompt for the next file. Do **not** batch the prompts; do **not** display multiple file prompts in a single message. Substitute `{file}` with the file path and `{today}` with today's date, and ask **verbatim**:
 
@@ -46,9 +46,9 @@ Handle the response:
 - **`no`** — proceed to Task 3 and identify Inflections yourself per the rule there.
 
 ## Task 3: Generate Wildly Different Ideas
-Read `./1-pager-output.md` for context.
+Read `./1-pager-output.txt` for context.
 
-Also read `./canonical-current-state.md` for the snapshot of what's shipped today. Anchor your output to the product as it exists, not as we wish it existed.
+Also read `./canonical-current-state.txt` for the snapshot of what's shipped today. Anchor your output to the product as it exists, not as we wish it existed.
 
 Generate multiple Ideas that solve the Problem using the following rules:
 
@@ -58,14 +58,14 @@ Generate multiple Ideas that solve the Problem using the following rules:
 - Each Idea suggested MUST be unique and take different directions on solving the Problem via the Input > Operations > Output flow.
 - Suggest wildly different Ideas that solve the Problem by answering: "What if ..." and "How might we ...?"
 - The "What if" statement should focus on gathering the Input(s), transforming / performing operations on the Input(s) (Function), and using the Output(s) of the Function to solve the Problem. For example: *"What if we [received input(s)], [did something to that/those input(s)] in order to [receive output(s)] so that [the problem is solved]?"*
-- Do NOT generate `Input(s)`, `Operation`, or `Output(s)` for any Idea at this stage. Those are produced for the Recommended Solution only by the `inputs-operations-outputs.md` runbook downstream. Selection happens at the framing level here.
+- Do NOT generate `Input(s)`, `Operation`, or `Output(s)` for any Idea at this stage. Those are produced for the Recommended Solution only by the `inputs-operations-outputs.txt` runbook downstream. Selection happens at the framing level here.
 - At least 1 Idea MUST be considered "Taboo". To be Taboo the Input > Operations > Output flow must be currently unsayable, unthinkable, or would cause social trouble to express (especially those that provoke the strongest reactions from the average United States citizen) — these may contain overlooked truths or future innovations.
 - IF there is Competitor Context provided THEN at least 1 Idea MUST be a Differentiated Solution from what the current Competitor offers so that IF the Target User becomes aware of the Input > Operations > Output flow THEN they respond by saying "I've never thought about solving this Problem in that way". Brainstorm Differentiated Solutions by filling in these blanks: *"For {Target Users} who are dissatisfied with {Existing Competitor Solution}, our product offers {Solution Idea}."*
 - Each Idea should use an **Inflection** — something newly introduced from the world around you that creates new empowerment for the first time possible. Categorize the Inflection as a Belief Inflection, Business Model Inflection, Technology Inflection, or Regulation Inflection. IF the user specified Inflection(s) to focus on in Task 2 THEN build Ideas around those Inflection(s) instead of self-generated ones — use each specified Inflection across at least one Idea, and distribute remaining Ideas across the specified Inflections (reusing them) rather than introducing new ones. IF the user did not specify any Inflections THEN identify the Inflections yourself.
 - Each Idea should feel like Magic to the Target User.
 - Include in the "Imagine this" section which component of the Idea will feel like Magic to the Target User.
 
-Display the full set of generated Ideas to the user using the Output Template below. Do NOT write anything to `./1-pager-output.md` yet.
+Display the full set of generated Ideas to the user using the Output Template below. Do NOT write anything to `./1-pager-output.txt` yet.
 
 **Output format is literal markdown.** Reproduce the Output Template below exactly — do not paraphrase labels, rename sections, or add commentary outside the template.
 
@@ -85,12 +85,12 @@ Present the following prompt **verbatim** (render as markdown, do not rewrite, s
 > Enter your selection:"
 
 Handle the user's response:
-- **`keep`** (with one or more idea numbers, or `all`) — retain only the selected ideas, discard the rest. Append the retained ideas (matching the Output Template) to the bottom of `./1-pager-output.md`, preserving all markdown formatting. Confirm the save. Report `save` as the terminal outcome.
+- **`keep`** (with one or more idea numbers, or `all`) — retain only the selected ideas, discard the rest. Append the retained ideas (matching the Output Template) to the bottom of `./1-pager-output.txt`, preserving all markdown formatting. Confirm the save. Report `save` as the terminal outcome.
 - **`combine`** (with two or more idea numbers) — synthesize the referenced ideas into a single new idea that preserves the strongest elements of each. Display the combined result alongside the remaining ideas and repeat this task.
 - **`refine`** (with an idea number) — ask what adjustments to make, apply the feedback to that idea, redisplay the full updated set, and repeat this task.
 - **`regenerate`** (or freeform regeneration instruction) — apply any guidance provided, re-run Task 3, display the new set, and repeat this task.
 - **freeform revision instructions** — interpret the intent, apply changes to the relevant ideas, display the updated set, and repeat this task.
-- **`skip`** — do not modify `./1-pager-output.md`. Inform the user that the Start a Movement Solution section has been omitted. Report `skip` as the terminal outcome.
+- **`skip`** — do not modify `./1-pager-output.txt`. Inform the user that the Start a Movement Solution section has been omitted. Report `skip` as the terminal outcome.
 
 ---
 

@@ -1,4 +1,4 @@
-# categorize-user-stories.md
+# categorize-user-stories.txt
 
 # Role:
 You are a Director of Product Management working with a Senior PM.
@@ -10,9 +10,9 @@ Your goal is to complete the following tasks:
 
 ## Task 1: Confirm Canonical Freshness
 This runbook references the following canonical file(s):
-- `./canonical-current-state.md`
+- `./canonical-current-state.txt`
 
-For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.md`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
+For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.txt`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
 
 Ask the user the question below for each remaining file — **one file at a time, sequentially**. Send the prompt for the first file, wait for the user's answer, handle it, and only then send the prompt for the next file. Do **not** batch the prompts; do **not** display multiple file prompts in a single message. Substitute `{file}` with the file path and `{today}` with today's date, and ask **verbatim**:
 
@@ -27,16 +27,16 @@ Ask the user the question below for each remaining file — **one file at a time
 For every `no`, wait for the user to confirm they've finished updating the file before continuing. Re-read the canonical file after the user confirms, then record `yes` in the ledger for that file. For every `yes`, record `yes` in the ledger. For every `ignore`, do not read or rely on that canonical file's contents — treat it as if it were blank and proceed; the user will fill in the relevant details manually. Record `ignore` in the ledger for that file. Do not proceed past this task until every referenced canonical has a `yes` or `ignore` status, whether just recorded or reused from the ledger.
 
 ## Task 2: Read Context
-Read `./1-pager-output.md` for context. The categorization must be consistent with the following sections:
+Read `./1-pager-output.txt` for context. The categorization must be consistent with the following sections:
 - **Problem Statement** — what problem we're solving.
 - **Hypothesis** — the problem hypothesis and the solution hypothesis.
 - **Recommended Solution** — the proposed solution being categorized.
 - **Success Metrics** — the criteria the project will be measured by.
 - **User Stories** — the stories to be categorized.
 
-Also read `./canonical-current-state.md` for the snapshot of what's shipped today. Anchor your output to the product as it exists, not as we wish it existed.
+Also read `./canonical-current-state.txt` for the snapshot of what's shipped today. Anchor your output to the product as it exists, not as we wish it existed.
 
-If the **User Stories** section is missing from `./1-pager-output.md`, stop and tell the user before continuing.
+If the **User Stories** section is missing from `./1-pager-output.txt`, stop and tell the user before continuing.
 
 ## Task 3: Categorize Each User Story as "Must Have" or "Nice-to-Have" (Scope)
 For every User Story in the existing User Stories section:
@@ -53,7 +53,7 @@ For every User Story in the existing User Stories section:
 
 Preserve every User Story exactly as written — do not edit titles, story text, Core Capability headings, or User Persona groupings during categorization. The only thing being added is the `[Category]` tag and the hypothesis line.
 
-Display the full categorization to the user using the **Review Display Format** below. The display includes the hypothesis statements so the user can pressure-test the reasoning before deciding what to trim. Do NOT write anything to `./1-pager-output.md` yet.
+Display the full categorization to the user using the **Review Display Format** below. The display includes the hypothesis statements so the user can pressure-test the reasoning before deciding what to trim. Do NOT write anything to `./1-pager-output.txt` yet.
 
 **Output format is literal markdown.** Reproduce the Review Display Format below exactly — do not paraphrase labels, rename sections, or add commentary outside the format.
 
@@ -80,26 +80,26 @@ Handle the user's response:
 - **`regenerate`** — re-run Task 3 from scratch, redisplay, and repeat this task.
 - **freeform instructions** — interpret the intent against the `refine` action set above, apply the changes, redisplay, and repeat this task.
 
-Do **not** edit User Story titles, story text, Core Capability headings, or User Persona groupings during this task — those are owned by `user-stories.md`. If the user asks to rewrite a story's title or story text, redirect them: "That edit belongs in the User Stories step. From here you can promote, demote, drop, or change the hypothesis."
+Do **not** edit User Story titles, story text, Core Capability headings, or User Persona groupings during this task — those are owned by `user-stories.txt`. If the user asks to rewrite a story's title or story text, redirect them: "That edit belongs in the User Stories step. From here you can promote, demote, drop, or change the hypothesis."
 
-## Task 5: Update the User Stories Section in `./1-pager-output.md` (In Place)
+## Task 5: Update the User Stories Section in `./1-pager-output.txt` (In Place)
 **Modify in place — do not append a new section.** The existing `## User Stories:` section is being rewritten so that every surviving story remains, each with a `[Must Have]` or `[Nice-to-Have]` prefix matching its category.
 
 Steps:
-1. Read `./1-pager-output.md`.
+1. Read `./1-pager-output.txt`.
 2. Locate the existing `## User Stories:` section (it ends at the next top-level `## ` heading or the next `---` separator, whichever comes first).
 3. For every surviving story, replace its bullet with the **Saved Output Format** below — `[Must Have]` or `[Nice-to-Have]` prefix added before the bold title (matching the story's current category), original Story title and story text preserved exactly. **Do not save the hypothesis line** — the hypothesis is for review only.
 4. Delete only the stories the user explicitly dropped via `refine`. If a Core Capability section becomes empty, remove that capability heading. If a User Persona section becomes empty, remove that persona heading. Do not leave empty headings behind.
 5. Preserve the trailing `---` separator that closes the section.
 6. Write the modified file back.
 
-Confirm to the user that the User Stories section in `./1-pager-output.md` has been updated and saved, and report the counts: kept (Must Have), kept (Nice-to-Have), and explicitly dropped during refine — e.g. "Saved: 9 Must Have, 4 Nice-to-Have. Dropped: 2 removed during refine."
+Confirm to the user that the User Stories section in `./1-pager-output.txt` has been updated and saved, and report the counts: kept (Must Have), kept (Nice-to-Have), and explicitly dropped during refine — e.g. "Saved: 9 Must Have, 4 Nice-to-Have. Dropped: 2 removed during refine."
 
 ## Task 6: Optional Nice-to-Have Cleanup
 After saving in Task 5, give the user one more chance to drop any `Nice-to-Have` stories before the runbook exits. **Skip this task entirely if zero `Nice-to-Have` stories were saved** — there is nothing to remove, so just end the runbook.
 
 If at least one `Nice-to-Have` story was saved, present the following prompt **verbatim** (render as markdown, do not rewrite, summarize, or add your own option list):
-> "All stories have been saved. Before we finish, do you want to remove any of the `Nice-to-Have` stories from `./1-pager-output.md`?
+> "All stories have been saved. Before we finish, do you want to remove any of the `Nice-to-Have` stories from `./1-pager-output.txt`?
 >
 > - `continue` — keep everything as saved and finish.
 > - `remove` — tell me which `Nice-to-Have` stories to remove (e.g. "remove 2 and 5", "remove the analytics one", "remove all Nice-to-Haves"). I'll delete them and re-prompt.
@@ -109,7 +109,7 @@ If at least one `Nice-to-Have` story was saved, present the following prompt **v
 Handle the user's response:
 - **`continue`** — end the runbook.
 - **`remove`** (or freeform instructions naming specific Nice-to-Have stories to drop) — interpret which `Nice-to-Have` stories the user wants removed. Then:
-    1. Read `./1-pager-output.md`.
+    1. Read `./1-pager-output.txt`.
     2. Delete the targeted `Nice-to-Have` bullets from the `## User Stories:` section. Only `Nice-to-Have` stories may be removed in this task — if the user names a `Must Have` story, refuse that specific removal and tell them: "Must Have stories can't be removed here. Re-run the categorize step if you want to demote and drop one."
     3. If a Core Capability section becomes empty, remove that capability heading. If a User Persona section becomes empty, remove that persona heading. Do not leave empty headings behind.
     4. Preserve the trailing `---` separator that closes the section.
@@ -142,7 +142,7 @@ Handle the user's response:
 ...
 ```
 
-# Saved Output Format (Task 5 — written back into `./1-pager-output.md`, replacing the existing User Stories section):
+# Saved Output Format (Task 5 — written back into `./1-pager-output.txt`, replacing the existing User Stories section):
 ```
 ## User Stories:
 

@@ -1,4 +1,4 @@
-# user-stories.md
+# user-stories.txt
 
 # Role:
 You are a Director of Product Management working with a Senior PM.
@@ -10,9 +10,9 @@ Your goal is to complete the following tasks:
 
 ## Task 1: Confirm Canonical Freshness
 This runbook references the following canonical file(s):
-- `./canonical-current-state.md`
+- `./canonical-current-state.txt`
 
-For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.md`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
+For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.txt`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
 
 Ask the user the question below for each remaining file — **one file at a time, sequentially**. Send the prompt for the first file, wait for the user's answer, handle it, and only then send the prompt for the next file. Do **not** batch the prompts; do **not** display multiple file prompts in a single message. Substitute `{file}` with the file path and `{today}` with today's date, and ask **verbatim**:
 
@@ -27,9 +27,9 @@ Ask the user the question below for each remaining file — **one file at a time
 For every `no`, wait for the user to confirm they've finished updating the file before continuing. Re-read the canonical file after the user confirms, then record `yes` in the ledger for that file. For every `yes`, record `yes` in the ledger. For every `ignore`, do not read or rely on that canonical file's contents — treat it as if it were blank and proceed; the user will fill in the relevant details manually. Record `ignore` in the ledger for that file. Do not proceed past this task until every referenced canonical has a `yes` or `ignore` status, whether just recorded or reused from the ledger.
 
 ## Task 2: Get a list of user personas
-Read `./1-pager-output.md` for context.
+Read `./1-pager-output.txt` for context.
 
-Also read `./canonical-current-state.md` for the snapshot of what's shipped today. Anchor your output to the product as it exists, not as we wish it existed.
+Also read `./canonical-current-state.txt` for the snapshot of what's shipped today. Anchor your output to the product as it exists, not as we wish it existed.
 
 Present this prompt to the user:
 > "Which User Personas should these User Stories cover? List one per line.
@@ -65,7 +65,7 @@ If multiple User Personas contain the same User Story, create a single combined 
 
 Only combine at the User Story level. Do not merge entire User Persona sections unless every Core Capability and User Story is shared.
 
-Display the full User Stories output to the user using the Output Template below. Do NOT write anything to `./1-pager-output.md` yet.
+Display the full User Stories output to the user using the Output Template below. Do NOT write anything to `./1-pager-output.txt` yet.
 
 **Output format is literal markdown.** Reproduce the Output Template below exactly — do not paraphrase labels, rename sections, or add commentary outside the template.
 
@@ -85,10 +85,10 @@ Handle the user's response:
 - **`regenerate`** — re-run Tasks 3–4, display the new output, and repeat this task.
 - **freeform instructions** — interpret the intent, apply changes, redisplay, and repeat this task.
 
-## Task 6: Append the Confirmed User Stories to `./1-pager-output.md`
-Append the Output Template block to the bottom of `./1-pager-output.md`, preserving all markdown formatting.
+## Task 6: Append the Confirmed User Stories to `./1-pager-output.txt`
+Append the Output Template block to the bottom of `./1-pager-output.txt`, preserving all markdown formatting.
 
-Confirm to the user that `./1-pager-output.md` has been updated and saved.
+Confirm to the user that `./1-pager-output.txt` has been updated and saved.
 
 ---
 

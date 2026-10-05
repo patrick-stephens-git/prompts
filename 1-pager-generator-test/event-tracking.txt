@@ -1,4 +1,4 @@
-# event-tracking.md
+# event-tracking.txt
 
 # Role:
 You are an Analytics Director working with a Senior PM.
@@ -10,10 +10,10 @@ Your goal is to complete the following tasks:
 
 ## Task 1: Confirm Canonical Freshness
 This runbook references the following canonical file(s):
-- `./canonical-success-metrics.md`
-- `./canonical-current-state.md`
+- `./canonical-success-metrics.txt`
+- `./canonical-current-state.txt`
 
-For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.md`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
+For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.txt`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
 
 Ask the user the question below for each remaining file — **one file at a time, sequentially**. Send the prompt for the first file, wait for the user's answer, handle it, and only then send the prompt for the next file. Do **not** batch the prompts; do **not** display multiple file prompts in a single message. Substitute `{file}` with the file path and `{today}` with today's date, and ask **verbatim**:
 
@@ -28,7 +28,7 @@ Ask the user the question below for each remaining file — **one file at a time
 For every `no`, wait for the user to confirm they've finished updating the file before continuing. Re-read the canonical file after the user confirms, then record `yes` in the ledger for that file. For every `yes`, record `yes` in the ledger. For every `ignore`, do not read or rely on that canonical file's contents — treat it as if it were blank and proceed; the user will fill in the relevant details manually. Record `ignore` in the ledger for that file. Do not proceed past this task until every referenced canonical has a `yes` or `ignore` status, whether just recorded or reused from the ledger.
 
 ## Task 2: Read Context
-Read `./1-pager-output.md` for context. The tracking plan must be consistent with the following sections:
+Read `./1-pager-output.txt` for context. The tracking plan must be consistent with the following sections:
 - **Problem Statement** — the user problem we're measuring around.
 - **Hypothesis** — the problem hypothesis and the solution hypothesis.
 - **Recommended Solution** — the proposed solution being instrumented.
@@ -37,20 +37,20 @@ Read `./1-pager-output.md` for context. The tracking plan must be consistent wit
 - **User Flow** — each surface in the flow becomes a Feature Page name; each transition becomes a Flow Event.
 - **Project Phases** — every event and property must be tagged with the phase it ships in.
 
-Also read `./canonical-success-metrics.md` for the canonical Success, Engagement, and Guardrail metrics. Use these metrics by name. Do not redefine them.
+Also read `./canonical-success-metrics.txt` for the canonical Success, Engagement, and Guardrail metrics. Use these metrics by name. Do not redefine them.
 
-Also read `./canonical-current-state.md` for the snapshot of what's shipped today. Anchor your output to the product as it exists, not as we wish it existed.
+Also read `./canonical-current-state.txt` for the snapshot of what's shipped today. Anchor your output to the product as it exists, not as we wish it existed.
 
-If any of the above sections are missing from `./1-pager-output.md`, stop and tell the user which section(s) are missing before continuing.
+If any of the above sections are missing from `./1-pager-output.txt`, stop and tell the user which section(s) are missing before continuing.
 
 ## Task 3: Map Metrics to Required Events
 No analytics tool is available. Do not look up existing events. Derive the events from the metrics.
 
-1. List every Success Metric in `./1-pager-output.md`.
-2. List every metric from `./canonical-success-metrics.md` that the Success Metrics rely on or could affect. Include Engagement Metrics and Guardrail Metrics.
+1. List every Success Metric in `./1-pager-output.txt`.
+2. List every metric from `./canonical-success-metrics.txt` that the Success Metrics rely on or could affect. Include Engagement Metrics and Guardrail Metrics.
 3. For each metric, write its formula in plain words. Name the numerator and the denominator where they apply.
 4. For each part of the formula, name the event and the properties needed to measure it. Example: Conversion Rate needs a view event and a completion event, plus a property to slice by user type.
-5. Check `./canonical-current-state.md`. If a needed event or property clearly ships today, record that fact. If you cannot tell, treat the event as new.
+5. Check `./canonical-current-state.txt`. If a needed event or property clearly ships today, record that fact. If you cannot tell, treat the event as new.
 6. Flag every metric that no event can measure. Report it as a coverage gap in Task 4.
 
 Hold this mapping in working memory for Task 4.
@@ -83,7 +83,7 @@ For every Success Metric in the 1-pager:
 
 Coverage gaps are not auto-fixed — surface them honestly to the user. The user resolves them during `refine` (Task 5) by either pulling the measuring event into Phase 1, adding a new measuring event, or accepting that the metric won't be evaluable until a later phase.
 
-Display the full tracking plan to the user using the **Output Template** below. Do NOT write anything to `./1-pager-output.md` yet.
+Display the full tracking plan to the user using the **Output Template** below. Do NOT write anything to `./1-pager-output.txt` yet.
 
 **Output format is literal markdown.** Reproduce the Output Template below exactly — do not paraphrase labels, rename sections, or add commentary outside the template.
 
@@ -111,10 +111,10 @@ Handle the user's response:
 
 If a `refine` instruction would *introduce* a Phase 1 metric coverage gap (e.g. moving a Success-Metric-measuring event from Phase 1 to a later phase), **warn the user before applying** — they may not realize the consequence.
 
-## Task 6: Append the Confirmed Tracking Plan to `./1-pager-output.md`
-Append the Output Template block to the bottom of `./1-pager-output.md`, preserving all markdown formatting. Because this runbook runs immediately after the Project Phases sanity check and before `design-paradigms.md`, appending to the bottom places the Tracking Plan section directly under Project Phases.
+## Task 6: Append the Confirmed Tracking Plan to `./1-pager-output.txt`
+Append the Output Template block to the bottom of `./1-pager-output.txt`, preserving all markdown formatting. Because this runbook runs immediately after the Project Phases sanity check and before `design-paradigms.txt`, appending to the bottom places the Tracking Plan section directly under Project Phases.
 
-Confirm to the user that `./1-pager-output.md` has been updated and saved.
+Confirm to the user that `./1-pager-output.txt` has been updated and saved.
 
 ---
 

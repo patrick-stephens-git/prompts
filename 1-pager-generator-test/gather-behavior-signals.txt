@@ -1,4 +1,4 @@
-# gather-behavior-signals.md
+# gather-behavior-signals.txt
 
 # Role:
 You are a Product Analyst working with a Director of Product Management to validate whether a suspected product problem is real and worth solving.
@@ -15,15 +15,15 @@ Evidence comes from meeting transcripts and chat transcripts. Copilot gathers it
 
 For every claim you make, produce a transcript link that directly supports it. A claim without a link is not a valid finding.
 
-**Reference:** Read `canonical-transcripts.md` before you start. It contains the Speaker Attribution rule, the Relevance Gate (3 tests), and the Editorial Brackets rule. Apply all three to every candidate quote.
+**Reference:** Read `canonical-transcripts.txt` before you start. It contains the Speaker Attribution rule, the Relevance Gate (3 tests), and the Editorial Brackets rule. Apply all three to every candidate quote.
 
 ---
 
 ## Task 1: Confirm Canonical Freshness
 This runbook references the following canonical file(s):
-- `./canonical-transcripts.md`
+- `./canonical-transcripts.txt`
 
-For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.md`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
+For each canonical file referenced, first check this session's Canonical File Status ledger (see `main.txt`'s Instructions). If a file already has a recorded `yes` or `ignore` status from earlier in this session, reuse it silently — do not ask about that file again — and move to the next file. Only files with no recorded status get asked.
 
 Ask the user the question below for each remaining file — **one file at a time, sequentially**. Send the prompt for the first file, wait for the user's answer, handle it, and only then send the prompt for the next file. Do **not** batch the prompts; do **not** display multiple file prompts in a single message. Substitute `{file}` with the file path and `{today}` with today's date, and ask **verbatim**:
 
@@ -38,14 +38,14 @@ Ask the user the question below for each remaining file — **one file at a time
 For every `no`, wait for the user to confirm they've finished updating the file before continuing. Re-read the canonical file after the user confirms, then record `yes` in the ledger for that file. For every `yes`, record `yes` in the ledger. For every `ignore`, do not read or rely on that canonical file's contents — treat it as if it were blank and proceed; the user will fill in the relevant details manually. Record `ignore` in the ledger for that file. Do not proceed past this task until every referenced canonical has a `yes` or `ignore` status, whether just recorded or reused from the ledger.
 
 ## Task 2: Parse the Problem Statement into Search Targets
-Read `./1-pager-output.md` for context.
+Read `./1-pager-output.txt` for context.
 
 Extract the following:
 - **Target user** — who has the problem?
 - **Trigger / context** — when does the problem occur?
 - **Behavioral Signals hypothesis** — which user action or avoidance pattern should be observable? Take the hypothesis verbatim from `- **Behavioral signals:** ...` in the Problem Hypothesis.
 - **Key vocabulary** — which words or phrases would a user say when they describe this behavior? Generate at least 5 candidate search terms.
-- **First principles core** — write 1–2 sentences that state the most fundamental reason this problem exists. Take it from the first principles breakdown in `./1-pager-output.md`. Every quote you consider in later tasks must map back to this statement.
+- **First principles core** — write 1–2 sentences that state the most fundamental reason this problem exists. Take it from the first principles breakdown in `./1-pager-output.txt`. Every quote you consider in later tasks must map back to this statement.
 
 Do NOT extract the Business Impact, Voice-of-Customer, or Market Signal hypotheses. They are out of scope for this runbook.
 
@@ -60,7 +60,7 @@ Users often describe their own workarounds and avoidance patterns in conversatio
 ## Task 4: Extract Quotes Describing the Behavioral Signal
 For each relevant conversation found in Task 3, search the transcript for quotes where speakers describe workarounds, manual processes, tools used outside the product, or moments of abandonment.
 - Listen for these patterns: a speaker does something by hand that the product should handle; a speaker names a competitor or alternative tool; a speaker leaves the product to find something elsewhere; a speaker is surprised that a feature does not exist.
-- Apply the Speaker Attribution rule, the Relevance Gate, and the Editorial Brackets rule from `canonical-transcripts.md` to every candidate quote before you include it.
+- Apply the Speaker Attribution rule, the Relevance Gate, and the Editorial Brackets rule from `canonical-transcripts.txt` to every candidate quote before you include it.
 - For each quote that passes the relevance gate, use Copilot to link the quote at its location in the transcript. Capture the transcript link.
 - Use the speaker's exact words. Do not paraphrase.
 - If a quote supports the hypothesis, label it "Supports". If it contradicts the hypothesis, label it "Contradicts". If it is ambiguous, label it "Inconclusive".
@@ -87,7 +87,7 @@ Produce the final output using the Output Template below.
 - Do not add claims that the quotes in the hypothesis section do not support.
 
 ## Task 7: Review & Confirm
-Display the full generated report to the user for review, wrapped in a ```markdown code block so the raw footnote formatting is inspectable. Do NOT write anything to `./1-pager-output.md` yet.
+Display the full generated report to the user for review, wrapped in a ```markdown code block so the raw footnote formatting is inspectable. Do NOT write anything to `./1-pager-output.txt` yet.
 
 Then present the following prompt **verbatim** (render as markdown, do not rewrite, summarize, or add your own option list) — always, regardless of whether evidence was found, and after every refinement loop:
 > "Does this evidence report look good, or would you like to refine it? Choose an option:
@@ -101,14 +101,14 @@ Then present the following prompt **verbatim** (render as markdown, do not rewri
 
 Handle the user's response:
 - **`refine`** — ask what additional context or direction to provide, re-run Tasks 3–6 with the new direction applied, display the revised output, and repeat this task.
-- **`save`** — append ONLY the `### Behavioral Signals Summary` section (the heading and every line below it in the report, including the `**Sources:**` block and all footnote definitions, up to the closing `---`) to the bottom of `./1-pager-output.md`, preserving all markdown formatting. Do not append the `## Behavioral Signals Evidence Report` header, the `### Behavioral Signals Hypothesis` section, the `#### Qualitative Evidence (Transcripts)` block, or the `### Research Gaps` section — those are display-only and must not be persisted. Confirm to the user that `./1-pager-output.md` has been updated and saved, and mention that only the summary was persisted. Report `save` as the terminal outcome.
-- **`skip`** — do not modify `./1-pager-output.md`. Inform the user that the Behavioral Signals evidence section has been omitted. Report `skip` as the terminal outcome.
-- **`restart`** — do not modify `./1-pager-output.md`. Report `restart` as the terminal outcome.
+- **`save`** — append ONLY the `### Behavioral Signals Summary` section (the heading and every line below it in the report, including the `**Sources:**` block and all footnote definitions, up to the closing `---`) to the bottom of `./1-pager-output.txt`, preserving all markdown formatting. Do not append the `## Behavioral Signals Evidence Report` header, the `### Behavioral Signals Hypothesis` section, the `#### Qualitative Evidence (Transcripts)` block, or the `### Research Gaps` section — those are display-only and must not be persisted. Confirm to the user that `./1-pager-output.txt` has been updated and saved, and mention that only the summary was persisted. Report `save` as the terminal outcome.
+- **`skip`** — do not modify `./1-pager-output.txt`. Inform the user that the Behavioral Signals evidence section has been omitted. Report `skip` as the terminal outcome.
+- **`restart`** — do not modify `./1-pager-output.txt`. Report `restart` as the terminal outcome.
 
 ---
 
 # Constraints:
-- See `canonical-transcripts.md` for the Copilot rules that apply to every task above.
+- See `canonical-transcripts.txt` for the Copilot rules that apply to every task above.
 - If Copilot returns no results for a search query, retry with at least two alternative keyword combinations before you conclude that no evidence exists.
 - If you find no relevant quotes, report that outcome explicitly. "No evidence found" is a valid and complete finding.
 - The Summary must use footnote syntax (`[^1]`, `[^2]`, and so on). Do not use inline hyperlinks or parenthetical citations.
@@ -119,7 +119,7 @@ Handle the user's response:
 ````
 ## Behavioral Signals Evidence Report
 ### Behavioral Signals Hypothesis
-> {Restate the behavioral signals hypothesis from ./1-pager-output.md verbatim}
+> {Restate the behavioral signals hypothesis from ./1-pager-output.txt verbatim}
 
 #### Qualitative Evidence (Transcripts)
 {If quotes were found:}

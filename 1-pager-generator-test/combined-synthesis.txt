@@ -1,4 +1,4 @@
-# combined-synthesis.md
+# combined-synthesis.txt
 
 # Role:
 You are a Director of Product Management working with a Senior PM to integrate evidence across multiple hypothesis lenses into a single diagnostic narrative.
@@ -9,7 +9,7 @@ Your goal is to complete the following tasks:
 ---
 
 ## Task 1: Gate Check — Determine Whether Synthesis Should Run
-Read `./1-pager-output.md` for context.
+Read `./1-pager-output.txt` for context.
 
 Identify which of the four hypothesis evidence summaries are present in the file and non-empty (i.e. not "No evidence found."):
 
@@ -24,10 +24,10 @@ Apply the following rules:
 - If **only one** report is present (or only one has a non-empty summary): do not proceed past this task. Inform the user:
     > "Only one evidence source is present, so no synthesis is needed. The existing Summary will stand on its own."
 
-  Do not modify `./1-pager-output.md`. Report `skip` as the terminal outcome.
-- If **none** are present (or all are "No evidence found."): do not proceed past this task. Inform the user that there is nothing to synthesize. Do not modify `./1-pager-output.md`. Report `skip` as the terminal outcome.
+  Do not modify `./1-pager-output.txt`. Report `skip` as the terminal outcome.
+- If **none** are present (or all are "No evidence found."): do not proceed past this task. Inform the user that there is nothing to synthesize. Do not modify `./1-pager-output.txt`. Report `skip` as the terminal outcome.
 
-## Task 2: Extract Source Material from `./1-pager-output.md`
+## Task 2: Extract Source Material from `./1-pager-output.txt`
 For each hypothesis summary present and non-empty, extract:
 
 - The summary paragraph, including all inline markdown links AND all footnote markers (`[^1]`, `[^2]`, etc.) as they appear.
@@ -50,7 +50,7 @@ Write a **Combined Summary** as a bulleted list that integrates every present hy
 - Do not introduce claims that are not already supported by one of the source reports.
 
 ## Task 4: Review & Confirm
-Display the combined output to the user wrapped in a ```markdown code block, in the shape defined by the "Display" section of the Output Template. Do NOT write anything to `./1-pager-output.md` yet.
+Display the combined output to the user wrapped in a ```markdown code block, in the shape defined by the "Display" section of the Output Template. Do NOT write anything to `./1-pager-output.txt` yet.
 
 Then present this prompt:
 > "Does this combined synthesis look good? Choose an option:
@@ -63,8 +63,8 @@ Then present this prompt:
 
 Handle the user's response:
 - **`refine`** — ask what to adjust, re-run Task 3 with the feedback, redisplay the revised synthesis, and repeat this task.
-- **`save`** — append the "Final file block" from the Output Template to the bottom of `./1-pager-output.md`, preserving all markdown formatting. Confirm to the user that `./1-pager-output.md` has been updated and saved. Report `save` as the terminal outcome.
-- **`skip`** — do not modify `./1-pager-output.md`. Inform the user that the combined synthesis has been omitted and the separate evidence reports will stand on their own. Report `skip` as the terminal outcome.
+- **`save`** — append the "Final file block" from the Output Template to the bottom of `./1-pager-output.txt`, preserving all markdown formatting. Confirm to the user that `./1-pager-output.txt` has been updated and saved. Report `save` as the terminal outcome.
+- **`skip`** — do not modify `./1-pager-output.txt`. Inform the user that the combined synthesis has been omitted and the separate evidence reports will stand on their own. Report `skip` as the terminal outcome.
 
 ---
 
@@ -83,7 +83,7 @@ Handle the user's response:
 [^2]: [First-name, role — YYYY-MM-DD](transcript_link_url) · [First-name, role — YYYY-MM-DD](transcript_link_url)
 ```
 
-**Final file block (appended to `./1-pager-output.md` on `save`):**
+**Final file block (appended to `./1-pager-output.txt` on `save`):**
 ```
 ## Combined Evidence Synthesis
 ### Summary

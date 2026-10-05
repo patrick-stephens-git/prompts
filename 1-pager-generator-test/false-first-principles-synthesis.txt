@@ -1,4 +1,4 @@
-# false-first-principles-synthesis.md
+# false-first-principles-synthesis.txt
 
 # Role:
 You are a Director of Product Management working with a Senior PM to apply First Principles Thinking to a product problem.
@@ -9,7 +9,7 @@ Your goal is to complete the following tasks:
 ---
 
 ## Task 1: Generate a First Principles Breakdown of the Problem Statement
-Read `./1-pager-output.md` for context.
+Read `./1-pager-output.txt` for context.
 
 First Principles Thinking breaks a problem down through categories and subcategories until reaching the smallest possible subcategory — the "First Principle". Aristotle defined the First Principle as the first basis from which a thing is known. It is the fundamental truth an idea is built upon; once found, the idea can be improved by improving the levels above it. A book is a useful analogy: a book is made of chapters, chapters of paragraphs, paragraphs of sentences, sentences of words, words of letters — the letter is the First Principle of the book. The 26 letters cannot change, but every layer above them can be improved, which improves the book.
 
@@ -77,9 +77,9 @@ This same rule extends to any chain depth — for `1, 1.1, 1.1.2`, keep only the
 
 **Splice the confirmed first principle into the Problem Statement (single-node and multi-node cases alike):**
 
-The confirmed first principle fills the `because of {independent variable: the suspected root cause}` clause of the Problem Statement template (see `collect-problem-statement.md`). What you display for confirmation below must be the actual full sentence that will be saved — not the bare principle alone.
+The confirmed first principle fills the `because of {independent variable: the suspected root cause}` clause of the Problem Statement template (see `collect-problem-statement.txt`). What you display for confirmation below must be the actual full sentence that will be saved — not the bare principle alone.
 
-1. Read the current `- **What problem are we solving?**` line under `## Problem Statement` in `./1-pager-output.md`.
+1. Read the current `- **What problem are we solving?**` line under `## Problem Statement` in `./1-pager-output.txt`.
 2. Lowercase the first letter of the confirmed first principle (unless it starts with a proper noun or acronym) — it opened its own sentence in the breakdown above, but here it becomes sentence-internal text following "because of." Make no other wording changes.
 3. Locate the sentence's `because of {...} when {...}` clause and update it, preserving the original clause order:
     - If a `because of ... when ...` clause is already present, replace only the text between "because of" and "when" with the confirmed first principle. Leave every other part of the sentence — including the `when {context}` clause and its position — untouched.
@@ -96,10 +96,10 @@ Handle the user's response:
 - If the user types **`confirm`**: proceed to Task 4.
 
 ## Task 4: Write the Confirmed Problem Statement and Remove the Staging Section
-1. Replace the `- **What problem are we solving?**` line under `## Problem Statement` in `./1-pager-output.md` with the exact full sentence confirmed in Task 3.
+1. Replace the `- **What problem are we solving?**` line under `## Problem Statement` in `./1-pager-output.txt` with the exact full sentence confirmed in Task 3.
 2. Remove the entire `### Why is this a problem?` section, including its `- **Identified first principle:** ...` line — that content now lives inside the `- **What problem are we solving?**` line.
 
-Confirm to the user that `./1-pager-output.md` has been updated and saved.
+Confirm to the user that `./1-pager-output.txt` has been updated and saved.
 
 ---
 
@@ -147,7 +147,7 @@ Confirm to the user that `./1-pager-output.md` has been updated and saved.
 - Principle N.N.N: {explanation} because {reason}
 ```
 
-**Task 4 result (replaces the `## Problem Statement` section in `./1-pager-output.md`; no `### Why is this a problem?` section remains):**
+**Task 4 result (replaces the `## Problem Statement` section in `./1-pager-output.txt`; no `### Why is this a problem?` section remains):**
 ```
 ## Problem Statement
 - **What problem are we solving?** {Target user} cannot {JTBD}, so {dependent variable} is happening, because of {confirmed first principle} when {context}.

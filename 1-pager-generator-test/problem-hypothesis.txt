@@ -1,4 +1,4 @@
-# problem-hypothesis.md
+# problem-hypothesis.txt
 
 # Role:
 You are a Director of Product Management working with a Senior PM to translate a product problem into a falsifiable hypothesis.
@@ -9,7 +9,7 @@ Your goal is to complete the following tasks:
 ---
 
 ## Task 1: Generate the Problem Hypothesis
-Read `./1-pager-output.md` for context.
+Read `./1-pager-output.txt` for context.
 
 Generate a Problem Hypothesis that explains how we would know if this is a real problem across the following signal dimensions. Each signal must be written as a specific, falsifiable observation — not a generic placeholder. The goal is to give the PM a concrete evidentiary standard they can bring into a stakeholder conversation.
 
@@ -29,10 +29,10 @@ Ask the user if they'd like to revise any signal dimension.
 - If yes: incorporate the revisions and redisplay the hypothesis. Repeat until the user is satisfied.
 - If no: proceed to Task 3.
 
-## Task 3: Append the Hypothesis to `./1-pager-output.md`
-Append the Output Template block to the bottom of `./1-pager-output.md`, preserving all markdown formatting.
+## Task 3: Append the Hypothesis to `./1-pager-output.txt`
+Append the Output Template block to the bottom of `./1-pager-output.txt`, preserving all markdown formatting.
 
-Confirm to the user that `./1-pager-output.md` has been updated and saved.
+Confirm to the user that `./1-pager-output.txt` has been updated and saved.
 
 ---
 

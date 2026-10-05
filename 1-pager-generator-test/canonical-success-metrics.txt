@@ -1,4 +1,4 @@
-# canonical-success-metrics.md
+# canonical-success-metrics.txt
 
 Canonical success metrics reference material. Runbooks read this file to learn which metrics exist. Use these metrics in every analysis and conclusion. Do not redefine them. Do not replace them with approximations.
 
